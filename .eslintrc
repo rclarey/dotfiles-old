@@ -1,0 +1,32 @@
+{
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "extends": "eslint-config-airbnb",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "import/extensions": [0],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "linebreak-style": [
+        2,
+        "unix"
+      ],
+      "semi": [
+        2,
+        "always"
+      ],
+      "max-len": [0],
+      "react/jsx-first-prop-new-line": [0]
+  },
+}
