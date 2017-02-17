@@ -11,6 +11,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'yggdroot/indentline'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 "--- Syntastic Settings ---
@@ -41,8 +42,8 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlsf_ackprg = 'ag'
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:10,results:99'
 let g:ycm_filetype_blacklist = { 'ctrlsf': 1 }
-hi StatusLine ctermbg=Green ctermfg=DarkGray
 filetype plugin indent on
+colorscheme angr
 
 "--- AutoCmds ---
 autocmd StdinReadPre * let s:std_in=1
