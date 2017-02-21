@@ -1,3 +1,6 @@
+"--- Commands ---
+command Fix !eslint % --fix
+
 "--- Plugins ---
 call plug#begin()
 Plug 'tpope/vim-sensible'
@@ -12,6 +15,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-commentary'
+Plug 'unblevable/quick-scope'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 "--- Syntastic Settings ---
@@ -24,7 +29,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
 
 "--- Lets & Sets ---
@@ -51,7 +56,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 "--- Maps ---
-map <Space> :noh<CR>:NERDTreeClose<CR>
+map <Space> :noh<CR>:NERDTreeClose<CR>:lclose<CR>
 map <C-\> :NERDTreeFind<CR>
 map <C-T> :CtrlP .<CR>
 map <C-_> :tabclose<CR>
@@ -59,6 +64,6 @@ map ∆ 4j
 map ˚ 4k
 nmap + :tabn<CR>
 nmap _ :tabp<CR>
-nmap T :tabedit
+nmap \ :tabedit
 nmap <C-f> <Plug>CtrlSFPrompt
 vmap <C-f> <Plug>CtrlSFVwordPath
