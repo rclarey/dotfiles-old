@@ -1,8 +1,13 @@
-col180=`printf '\033[38;5;180m'`
-col74=`printf '\033[38;5;74m'`
-col179=`printf '\033[38;5;179m'`
-col71=`printf '\033[38;5;71m'`
-colrst=`printf '\033[0m'`
+#col180=`printf "\033[38;5;180m"`
+#col74=`printf "\033[38;5;74m"`
+#col179=`printf "\033[38;5;179m"`
+#col71=`printf "\033[38;5;71m"`
+#colrst=`printf "\033[0m"`
+col180=$(tput setaf 180)
+col74=$(tput setaf 74)
+col179=$(tput setaf 179)
+col71=$(tput setaf 71)
+colrst=$(tput sgr0)
 find_git_branch() {
   # Based on: http://stackoverflow.com/a/13003854/170413
   local branch
@@ -10,7 +15,7 @@ find_git_branch() {
     if [[ "$branch" == "HEAD" ]]; then
       branch="detached*"
     fi
-    git_branch=" ${colrst}on ${col180}$branch "
+    git_branch="$colrst on $col180$branch "
   else
     git_branch=""
   fi
@@ -37,4 +42,4 @@ cut_home() {
 
 PROMPT_COMMAND="find_git_branch; find_git_dirty; cut_home; $PROMPT_COMMAND"
 
-export PS1=" ${col71}\$dir\$git_branch\$git_dirty\n${colrst}➡ "
+export PS1=" \[$col71\]\$dir\$git_branch\$git_dirty\n\[$colrst\]➡ "

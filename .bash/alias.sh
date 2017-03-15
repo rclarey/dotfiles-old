@@ -1,6 +1,7 @@
 alias ls='ls -AF'
 alias c='clear'
 alias s='git status'
+alias d='git diff'
 alias a='git add'
 alias a.="git add ."
 alias gr="git reset --hard HEAD"
