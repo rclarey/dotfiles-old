@@ -30,12 +30,11 @@ add-highlighter -group /javascript/literal       fill string
 add-highlighter -group /javascript/literal       regex \${.*?} 0:variable
 add-highlighter -group /javascript/tag           regex (((?<=<\/)|(?<=<))[A-Za-z][\w.$]*?(?=\s|>))|((?<=\s)[A-Za-z][\w$]*?(?==))|((?<==)["'{](.|\n)*?(?<!\\)(\\\\)*["'}]) 1:attribute 3:function 4:string   
 
-add-highlighter -group /javascript/code regex \b(document|false|null|parent|self|this|true|undefined|window|Infinity|NaN)\b 0:value
+add-highlighter -group /javascript/code regex \b(document|false|null|true|undefined|window|Infinity|NaN)\b 0:value
 add-highlighter -group /javascript/code regex "-?[0-9]*\.?[0-9]+" 0:value
 add-highlighter -group /javascript/code regex \b(Array|Boolean|arguments|module|Date|Function|Number|Object|RegExp|String|Error|EvalError|InternalError|RangeError|ReferenceError|SyntaxError|TypeError|URIError|Math|Int8Array|Uint8Array|Uint8ClampedArray|Int16Array|Uint16Array|Float32Array|Float64Array|Map|Set|WeakMap|WeakSet|ArrayBuffer|DataView|JSON|Promise|Generator|GeneratorFunction|Reflect|Proxy|Intl|WebAssembly)\b 0:type
-add-highlighter -group /javascript/code regex (?<=\.)(prototype|constructor|BYTES_PER_ELEMENT|buffer|byteLength|byteOffset|caller|columnNumber|compare|displayName|E|EPSILON|fileName|flags|format|get|global|hasInstance|ignoreCase|input|isConcatSpreadable|iterator|LN10|LN2|LOG10E|LOG2E|lastIndex|lastMatch|lastParen|leftContext|length|lineNumber|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|match|message|multiline|NEGATIVE_INFINITY|NaN|name|PI|POSITIVE_INFINITY|prototype|replace|rightContext|SQRT1_2|SQRT2|search|size|source|species|split|stack|sticky|toPrimitive|toStringTag|unicode|unscopables)\b 0:value
-add-highlighter -group /javascript/code regex (?<=\s)[$A-Z_][$A-Z0-9_]*[A-Z][$A-Z0-9_]* 0:value
-add-highlighter -group /javascript/code regex (?<=\s)[$A-Za-z_][$\w]* 0:variable
+add-highlighter -group /javascript/code regex (?<=\.)(prototype|constructor|BYTES_PER_ELEMENT|buffer|byteLength|byteOffset|caller|columnNumber|compare|displayName|E|EPSILON|fileName|flags|format|get|global|hasInstance|ignoreCase|input|isConcatSpreadable|iterator|LN10|LN2|LOG10E|LOG2E|lastIndex|lastMatch|lastParen|leftContext|length|lineNumber|MAX_SAFE_INTEGER|MAX_VALUE|MIN_SAFE_INTEGER|MIN_VALUE|match|message|multiline|NEGATIVE_INFINITY|NaN|name|PI|POSITIVE_INFINITY|prototype|replace|rightContext|SQRT1_2|SQRT2|search|size|source|species|split|stack|sticky|toPrimitive|toStringTag|unicode|unscopables)\b 0:meta
+add-highlighter -group /javascript/code regex (?<=\b)[$A-Za-z_][$\w]* 0:variable
 add-highlighter -group /javascript/code regex \$*\b[$\w]+(?=\() 0:function
 
 # Keywords are collected at
