@@ -1,31 +1,33 @@
 #!/usr/bin/env bash
 
 state=`osascript -e 'tell application "Spotify" to player state as string'`
-artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`
-track=`osascript -e 'tell application "Spotify" to name of current track as string'`
-dur=`osascript -e 'tell application "Spotify"
-  set durSec to (duration of current track div 1000) as text
-  set tM to (durSec div 60) as text
-  set tS to (durSec mod 60) as text
-  if length of tS is less than 2 then
-    set tS to ("0" & tS) as text
-  end if
-  set myTime to tM & ":" & tS
-  end tell
-  return myTime'`
-pos=`osascript -e 'tell application "Spotify"
-  set pos to (player position div 1) as text
-  set tM to (pos div 60) as text
-  set tS to (pos mod 60) as text
-  if length of tS is less than 2 then
-    set tS to ("0" & tS) as text
-  end if
-  set myTime to tM & ":" & tS
-  end tell
-  return myTime'`
-if [ $state == "playing" ]; then
-  statechar="〜"
-else
-  statechar="■"
+if [ $state != "stopped" ];then
+  artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`
+  track=`osascript -e 'tell application "Spotify" to name of current track as string'`
+  dur=`osascript -e 'tell application "Spotify"
+    set durSec to (duration of current track div 1000) as text
+    set tM to (durSec div 60) as text
+    set tS to (durSec mod 60) as text
+    if length of tS is less than 2 then
+      set tS to ("0" & tS) as text
+    end if
+    set myTime to tM & ":" & tS
+    end tell
+    return myTime'`
+  pos=`osascript -e 'tell application "Spotify"
+    set pos to (player position div 1) as text
+    set tM to (pos div 60) as text
+    set tS to (pos mod 60) as text
+    if length of tS is less than 2 then
+      set tS to ("0" & tS) as text
+    end if
+    set myTime to tM & ":" & tS
+    end tell
+    return myTime'`
+  if [ $state == "playing" ]; then
+    statechar="〜"
+  else
+    statechar="■"
+  fi
+  echo "$statechar $track | $artist | $pos / $dur"
 fi
-echo "$statechar $track | $artist | $pos / $dur"
