@@ -17,8 +17,8 @@ set -g status-left "#[fg=colour71]#S #[fg=colour249]» #[fg=colour179]#I #[fg=co
 # Right side of status bar
 set -g status-right-bg colour234
 set -g status-right-fg colour249
-set -g status-right-length 60
-set -g status-right "#[fg=colour108]%I#[fg=colour74]:#[fg=colour108]%M #[fg=colour180]#(spotstat)#(echo ' ')"
+set -g status-right-length 80
+set -g status-right "#[fg=colour108]#(pmset -g batt | ag -o '[0-9][0-9](?=%)')#[fg=colour74]%% #[fg=colour180]| #[fg=colour108]%I#[fg=colour74]:#[fg=colour108]%M #[fg=colour180]#(spotstat)#(echo ' ')"
 
 # Window status
 set -g window-status-format " #I#[fg=colour71]:#[fg=colour249]#W#F "
