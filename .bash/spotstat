@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+info_async() {
+  artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`
+  track=`osascript -e 'tell application "Spotify" to name of current track as string'`
+  dur=`osascript -e 'tell application "Spotify"
+    set durSec to (duration of current track div 1000) as text
+    set tM to (durSec div 60) as text
+    set tS to (durSec mod 60) as text
+    if length of tS is less than 2 then
+      set tS to ("0" & tS) as text
+    end if
+    set myTime to tM & ":" & tS
+    end tell
+    return myTime'`
+  echo -e "$track | $artist |\n$dur" > $HOME/.spotstat.state
+}
+
 state=`osascript -e 'tell application "Spotify" to player state as string'`
 if [ $state != "stopped" ];then
   info=`head -n 1 $HOME/.spotstat.state 2> /dev/null`
@@ -19,6 +35,6 @@ if [ $state != "stopped" ];then
   else
     statechar="■"
   fi
-  spotstatasync &
+  info_async &
   echo "$statechar $info $pos / $dur"
 fi
