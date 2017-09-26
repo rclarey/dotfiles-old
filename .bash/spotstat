@@ -15,9 +15,9 @@ info_async() {
     return myTime'`
   echo -e "$track | $artist |\n$dur" > $HOME/.spotstat.state
 }
-
-state=`osascript -e 'tell application "Spotify" to player state as string'`
-if [ $state != "stopped" ];then
+state=`osascript -e 'if application "Spotify" is running then' -e 'return "running"' -e 'end if'`
+if [ "$state" == "running" ]; then
+  state=`osascript -e 'tell application "Spotify" to player state as string'`
   info=`head -n 1 $HOME/.spotstat.state 2> /dev/null`
   dur=`tail -n 1 $HOME/.spotstat.state 2> /dev/null`
   pos=`osascript -e 'tell application "Spotify"
@@ -30,7 +30,7 @@ if [ $state != "stopped" ];then
     set myTime to tM & ":" & tS
     end tell
     return myTime'`
-  if [ $state == "playing" ]; then
+  if [ "$state" == "playing" ]; then
     statechar="〜"
   else
     statechar="■"
