@@ -1,0 +1,12 @@
+'atom-text-editor':
+  'ctrl-f': 'editor:move-to-end-of-word'
+  'ctrl-b': 'editor:move-to-beginning-of-word'
+  'ctrl-d': 'editor:delete-to-end-of-word'
+  'ctrl-backspace': 'editor:delete-to-beginning-of-word'
+  'ctrl-y': 'pane:split-right-and-copy-active-item'
+  'ctrl-l': 'pane:show-next-item'
+  'ctrl-h': 'pane:show-previous-item'
+  'ctrl-x': 'core:close'
+  'ctrl-w': 'window:focus-next-pane'
+  'ctrl-space': 'linter-ui-default:toggle-panel'
+  'alt-w': 'editor:select-word'
