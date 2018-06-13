@@ -1,0 +1,6 @@
+source "$HOME/.bash/ps1.sh"
+source "$HOME/.bash/alias.sh"
+
+export PS1="$PS1"
+export TERM=xterm-256color
+
